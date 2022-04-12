@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NiseMario.unity
     guid: 42835045ab7c3924484c19da127a506c
+  - enabled: 1
+    path: Assets/Scenes/RPGBattle.unity
+    guid: 86a5c23b0f5854248904aaff7302f7ec
   m_configObjects: {}
