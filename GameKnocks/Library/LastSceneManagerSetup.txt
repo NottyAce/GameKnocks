@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/NiseMario.unity
+- path: Assets/Scenes/RPGBattle.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
