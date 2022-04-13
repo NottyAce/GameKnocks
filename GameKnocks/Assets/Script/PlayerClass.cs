@@ -49,11 +49,32 @@ public class PlayerClass : MonoBehaviour
             Debug.Log("Jump!");
         }
     }
+    private void FixedUpdate()
+    {
+        
+    }
+
+    private void PlayerAction(Vector2 direction) {
+
+        if (direction == right)
+        {
+            playerRigid.AddForce(right);
+        }
+        else if (direction == left)
+        {
+            playerRigid.AddForce(left);
+        }
+        else { 
+        
+        }
+
+        playerRigid.AddForce(jump);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "DeathZone")
         {
-            Debug.Log("Oh!No!");
             SceneManager.LoadScene("NiseMario");
         }
     }
