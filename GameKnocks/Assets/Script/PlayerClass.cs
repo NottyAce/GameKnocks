@@ -24,7 +24,7 @@ public class PlayerClass : MonoBehaviour
         playerRigid = player.GetComponent<Rigidbody2D>();
         right.x = right.x * movePow;
         left.x = left.x * movePow;
-        jump.y = jump.y * jumpPow;
+        jump.y = jump.y * movePow;
     }
 
     // Update is called once per frame
@@ -32,11 +32,11 @@ public class PlayerClass : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            playerRigid.AddForce(right);
+            PlayerAction(right);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
-            playerRigid.AddForce(left);
+            PlayerAction(left);
         }
         else
         {
@@ -45,8 +45,8 @@ public class PlayerClass : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow) && playerRigid.velocity.y < jumpFull)
         {
-            playerRigid.AddForce(jump);
-            Debug.Log("Jump!");
+            PlayerAction(jump);
+            //Debug.Log("Jump!");
         }
     }
     private void FixedUpdate()
@@ -68,7 +68,11 @@ public class PlayerClass : MonoBehaviour
         
         }
 
-        playerRigid.AddForce(jump);
+        if (direction == jump) {
+            jump.x = playerRigid.velocity.x;
+            jump.y = jumpPow + movePow * Mathf.Sin(Mathf.Atan(playerRigid.velocity.y / playerRigid.velocity.x));
+            playerRigid.AddForce(jump);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
