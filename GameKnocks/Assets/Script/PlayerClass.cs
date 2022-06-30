@@ -18,6 +18,7 @@ public class PlayerClass : MonoBehaviour
     Vector2 left = new Vector2(-1, 0);
     Vector2 jump = new Vector2(0, 1);
     Vector2 stop = new Vector2(0, 0);
+    float jumpdet = 0;//ÉWÉÉÉìÉvÇÃê≥ãKâªóp
     // Start is called before the first frame update
     void Start()
     {
@@ -69,8 +70,13 @@ public class PlayerClass : MonoBehaviour
         }
 
         if (direction == jump) {
+            jumpdet = playerRigid.velocity.x + jump.y;
+
             jump.x = playerRigid.velocity.x;
-            jump.y = jumpPow + movePow * Mathf.Sin(Mathf.Atan(playerRigid.velocity.y / playerRigid.velocity.x));
+            jump.y = (jump.y + jumpPow);
+            if (jumpdet != 0) {
+                jump = jump * jumpPow / jumpdet;
+            }
             playerRigid.AddForce(jump);
         }
     }
