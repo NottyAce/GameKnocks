@@ -5,24 +5,24 @@ using UnityEngine;
 public class Fuwatto : MonoBehaviour
 {
     [SerializeField]
-    private Animator fuwatto;
+    private Animator fuwattoAnima;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        fuwatto = GetComponent<Animator>();
-        
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        fuwatto.SetTrigger("");
+        Debug.Log("Anima");
+        fuwattoAnima.SetBool("AnimationStart", true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
 }
