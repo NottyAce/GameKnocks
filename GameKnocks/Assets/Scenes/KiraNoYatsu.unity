@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 537699085}
-  movePow: 3
+  movePow: 10
   jumpPow: 10
   jumpFull: 20
 --- !u!1 &809972104
