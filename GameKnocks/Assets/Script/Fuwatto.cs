@@ -5,8 +5,9 @@ using UnityEngine;
 public class Fuwatto : MonoBehaviour
 {
     [SerializeField]
-    private Animator fuwattoAnima;
-
+    private Animation fuwattoAnima;
+    [SerializeField]
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -16,8 +17,17 @@ public class Fuwatto : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Anima");
-        fuwattoAnima.SetBool("AnimationStart", true);
+        if(collision.gameObject.tag == "Player")
+        //Debug.Log("Anima");
+        //fuwattoAnima.Play();
+        anim.SetBool("fuwattoStart",true);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player") {
+            anim.SetBool("fuwattoStart", false);
+        }
     }
 
     // Update is called once per frame

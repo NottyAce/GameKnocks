@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 537699090}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,7 +595,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &537699089
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -636,8 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 537699085}
   movePow: 10
-  jumpPow: 10
-  jumpFull: 20
+  jumpPow: 40
 --- !u!1 &809972104
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +762,7 @@ GameObject:
   - component: {fileID: 1639583213}
   - component: {fileID: 1639583217}
   - component: {fileID: 1639583218}
+  - component: {fileID: 1639583219}
   m_Layer: 0
   m_Name: FuwattoGround
   m_TagString: Untagged
@@ -877,7 +877,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639583212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -916,7 +916,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb50b163753165e4d8497a78bce7a269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuwattoAnima: {fileID: 1639583217}
+  fuwattoAnima: {fileID: 1639583219}
+  anim: {fileID: 1639583217}
+--- !u!111 &1639583219
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639583212}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 225008ab2c9018b4e8eea6706442ef66, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 225008ab2c9018b4e8eea6706442ef66, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1743165836
 GameObject:
   m_ObjectHideFlags: 0

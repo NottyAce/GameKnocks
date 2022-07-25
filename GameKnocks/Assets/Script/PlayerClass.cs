@@ -11,8 +11,8 @@ public class PlayerClass : MonoBehaviour
     int movePow = 1;
     [SerializeField]
     int jumpPow = 1;
-    [SerializeField]
-    int jumpFull = 2;
+    //[SerializeField]
+    //int jumpFull = 2;
     Rigidbody2D playerRigid;
     Vector2 right = new Vector2(1, 0);
     Vector2 left = new Vector2(-1, 0);
@@ -31,23 +31,10 @@ public class PlayerClass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            PlayerAction(right);
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            PlayerAction(left);
-        }
-        else
-        {
-            playerRigid.velocity = stop;
-        }
-
-        if (Input.GetKey(KeyCode.UpArrow) && playerRigid.velocity.y < jumpFull)
-        {
-            PlayerAction(jump);
-            //Debug.Log("Jump!");
+        playerRigid.velocity = new Vector2(Input.GetAxis("Horizontal") * movePow,playerRigid.velocity.y);
+        
+        if (Input.GetKeyDown(KeyCode.UpArrow) && !(playerRigid.velocity.y < -0.5f)){
+            Jump();
         }
     }
     private void FixedUpdate()
@@ -55,37 +42,15 @@ public class PlayerClass : MonoBehaviour
         
     }
 
-    private void PlayerAction(Vector2 direction) {
-
-        if (direction == right)
-        {
-            playerRigid.AddForce(right);
-        }
-        else if (direction == left)
-        {
-            playerRigid.AddForce(left);
-        }
-        else { 
-        
-        }
-
-        if (direction == jump) {
-            jumpdet = playerRigid.velocity.x + jump.y;
-
-            jump.x = playerRigid.velocity.x;
-            jump.y = (jump.y + jumpPow);
-            if (jumpdet != 0) {
-                jump = jump * jumpPow / jumpdet;
-            }
-            playerRigid.AddForce(jump);
-        }
+    void Jump() {
+        playerRigid.AddForce(Vector2.up * jumpPow, ForceMode2D.Impulse);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "DeathZone")
         {
-            SceneManager.LoadScene("NiseMario");
+            SceneManager.LoadScene("KiraNoYatsu");
         }
     }
 }
