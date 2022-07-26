@@ -11,21 +11,20 @@ public class PlayerClass : MonoBehaviour
     int movePow = 1;
     [SerializeField]
     int jumpPow = 1;
-    //[SerializeField]
-    //int jumpFull = 2;
+    [SerializeField]
+    GameObject fuwatto;
     Rigidbody2D playerRigid;
-    Vector2 right = new Vector2(1, 0);
-    Vector2 left = new Vector2(-1, 0);
-    Vector2 jump = new Vector2(0, 1);
-    Vector2 stop = new Vector2(0, 0);
-    float jumpdet = 0;//ÉWÉÉÉìÉvÇÃê≥ãKâªóp
+    Transform playerTrans;
+    Animator fuwattoAnima;
+    Transform fuwattoTrans;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRigid = player.GetComponent<Rigidbody2D>();
-        right.x = right.x * movePow;
-        left.x = left.x * movePow;
-        jump.y = jump.y * movePow;
+        playerTrans = player.GetComponent<Transform>();
+        fuwattoAnima = fuwatto.GetComponent<Animator>();
+        fuwattoTrans = fuwatto.GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -36,6 +35,10 @@ public class PlayerClass : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) && !(playerRigid.velocity.y < -0.5f)){
             Jump();
         }
+
+        //if () { 
+        
+        //}
     }
     private void FixedUpdate()
     {
@@ -52,5 +55,12 @@ public class PlayerClass : MonoBehaviour
         {
             SceneManager.LoadScene("KiraNoYatsu");
         }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        //if ((collision.gameObject.name == "FuwattoGround") && (Input.GetAxis("Horizontal") != 0.0f || Input.GetKeyDown(KeyCode.UpArrow) != false)) {
+        //    player.GetComponent<Transform>().position.y = fuwattoTrans.position.y;
+        //} 
     }
 }
