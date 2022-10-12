@@ -53,7 +53,18 @@ public class PlayerClass : MonoBehaviour
     {
         if (collision.gameObject.tag == "DeathZone")
         {
-            SceneManager.LoadScene("KiraNoYatsu");
+            string sceneName = SceneManager.GetActiveScene().name;
+            if (sceneName == "KiraNoYatsu")
+            {
+                SceneManager.LoadScene("KiraNoYatsu");
+            }
+            else if (sceneName == "FuwattoBall")
+            {
+                SceneManager.LoadScene("FuwattoBall");
+            }
+            else { 
+            
+            }
         }
     }
 
