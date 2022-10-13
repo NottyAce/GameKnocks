@@ -5,6 +5,8 @@ using UnityEngine;
 public class Fuwatto : MonoBehaviour
 {
     [SerializeField]
+    GameObject Player;
+    [SerializeField]
     private Animation fuwattoAnima;
     [SerializeField]
     private Animator anim;
@@ -21,6 +23,9 @@ public class Fuwatto : MonoBehaviour
         //Debug.Log("Anima");
         //fuwattoAnima.Play();
         anim.SetBool("fuwattoStart",true);
+        //for (; ; ) {
+        //    Player.transform.position += transform.position;
+        //}
     }
 
     private void OnCollisionExit2D(Collision2D collision)
